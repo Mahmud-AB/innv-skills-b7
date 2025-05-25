@@ -1,0 +1,15 @@
+API > set of rule that allows communicate
+REST > architectural style > stateless, http method, resource
+rest api > rest + http
+DRF > django rest framework
+
+http  methods
+get,post,patch,put,delete
+resource
+get /products/
+
+serializers
+python object > json
+deserializers
+json > python object
+validation

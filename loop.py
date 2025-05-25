@@ -14,12 +14,12 @@
 #     a = 1
 #     print(a)
 
-# row = 5
+row = 5
 #range(start,stop,step)
-# for i in range(1,row+1):
-#     for j in range(1,i+1):
-#         print(i,end=" ")
-#     print("\n")
+for i in range(1,row+1):
+    for j in range(1,i+1):
+        print(i,end=" ")
+    print("\n")
 # for i in range(1,row+1):
 #     for j in range(1,row-i+1):
 #         print(" ",end=" ")
@@ -70,14 +70,14 @@
 # list comprehension
 # [assign_value for item in iterable] structure
 
-list2 = [ a for a in ("apple","banana","cherry") if a!="banana"]
-# list1 = [ b for a in ("apple","banana","cherry") for b in a ]
-list1 = [] 
-for a in ("apple","banana","cherry"):
-    if a!="banana":
-        list1.append(a)
-print("normal",list1)
-print("comprehension",list2)
+# list2 = [ a for a in ("apple","banana","cherry") if a!="banana"]
+# # list1 = [ b for a in ("apple","banana","cherry") for b in a ]
+# list1 = [] 
+# for a in ("apple","banana","cherry"):
+#     if a!="banana":
+#         list1.append(a)
+# print("normal",list1)
+# print("comprehension",list2)
 # list2 = [ x**2 for x in range(5)]
 # print(list2)
 

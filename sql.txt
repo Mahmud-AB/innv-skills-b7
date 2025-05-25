@@ -1,0 +1,37 @@
+SQL
+Structured Query Language
+manage,manipulate(CRUD)
+C - Create
+R - Read
+U - Update
+D - Delete
+
+ACID
+A - Atomicity - All or Nothing
+C - Consistency - Always Valid State
+I - Isolation - Run Independently
+D - Durability - Permanently Saved
+
+point A = 100
+point B = 100
+
+point A > point B 100
+
+point A = 0
+
+point B  = 200 (Failed)
+
+point A 0 + 100 = 100
+point B 200 - 100 = 100
+
+MYSQL Table Level Lock
+table:
+row 1
+row 2
+row 1 column 2 > change
+row 1 and row 2 will be freezed
+Postgresql Row Level Lock
+row 1
+row 2 
+row 1 colomn 2 >  change
+row 1 will be freezed

@@ -1,0 +1,20 @@
+pip install virtualenv
+
+create venv
+virtualenv {env name}
+
+active
+.\{env name}\Scripts\activate
+
+show lib
+pip freeze
+
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+database migration
+python manage.py makemigrations
+python manage.py migrate
+
+create superuser
+python manage.py createsuperuser

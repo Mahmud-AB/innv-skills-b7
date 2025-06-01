@@ -8,7 +8,7 @@ class Profile(models.Model):
     phone = models.CharField(max_length=15)
     address = models.TextField()
     profile_pic = ResizedImageField(size=[300, 300], upload_to='profile_pics', null=True, blank=True, force_format='webp', quality=100)
-
+    role = models.CharField(max_length=50, choices=[('student', 'Student'), ('teacher', 'Teacher'), ('admin', 'Admin')], default='student')
     @property
     def full_name(self):
         return f"{self.user.first_name} {self.user.last_name}"

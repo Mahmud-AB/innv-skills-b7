@@ -16,3 +16,44 @@
 # cons > large token size, can be stolen if not using HTTPS, server has to verify the token, loacl storage saves token, which can be a security risk if not using HTTPS
 
 # OAUTH2.0 > third-party authentication service that allows users to log in using their existing accounts from other platforms (e.g., Google, Facebook)
+
+from dj_rest_auth.views import LoginView
+
+from app1.models import Student
+from rest_framework.response import Response
+from django.views.decorators.csrf import csrf_exempt
+
+class CustomLoginView(LoginView):
+    def post(self, request, *args, **kwargs):
+        user = self.request.data.get('user')
+        student = None
+        if "@" in user:
+            student = Student.objects.filter(user__email=user).first()
+        else:
+            student = Student.objects.filter(phone=user).first()
+        self.request.data['username'] = student.user.username
+        self.serializer = self.get_serializer(data=self.request.data)
+        self.serializer.is_valid(raise_exception=True)
+        self.login()
+        print(self.get_response())
+        response = {
+            "access_token": self.get_response().data["access"],
+            "refresh_token": self.get_response().data["refresh"],
+            "user": {
+                "id": student.id,
+                "username": student.user.username,
+                "first_name": student.user.first_name,
+                "last_name": student.user.last_name,
+                "email": student.user.email,
+                "profile":{
+                    "phone": student.phone
+                }
+            }
+        }
+        return Response(response)
+    
+class CustomLogoutView(LoginView):
+    @csrf_exempt
+    def post(self, request, *args, **kwargs):
+        self.logout()
+        return Response({"message": "Logged out successfully"})

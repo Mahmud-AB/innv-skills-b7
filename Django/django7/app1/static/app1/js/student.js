@@ -37,6 +37,7 @@ function handleApi(){
             }
             tableBody.innerHTML = new_data;
             console.log("Data fetched successfully:", data);
+            windows.location.href = "";
         },
         error: function(xhr, status, error) {
             console.error("Error fetching data:", error);

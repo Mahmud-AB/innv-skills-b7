@@ -4,12 +4,16 @@ from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, 
 from . import views
 from . import api
 from . import api_view
+from .auth_app import CustomLoginView,CustomLogoutView
 from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register('studentlist', api_view.StudentViewSet, basename='student')
+router.register('student-registration', api_view.StudentRegView, basename='student_registration')
 urlpatterns = [
     path('', include(router.urls)),
+    path('login-student/', CustomLoginView.as_view()),
+    path('logout-student/', CustomLogoutView.as_view(), name='logout_student'),
     path('accounts/login/',views.login_page, name='login_page'),
     path('accounts/logout/',views.logout_page, name='logout_page'),
 
